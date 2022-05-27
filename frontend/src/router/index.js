@@ -1,76 +1,90 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from "vue";
+import Router from "vue-router";
 import NProgress from 'nprogress';
+import Home from "@/views/home/HomeNavigationViews";
+import Produto from "@/views/produto/ProdutoViews.vue";
+import Login from "@/views/login/LoginViews.vue";
+import Usuario from "@/views/usuario/Usuario";
+import UsuarioProdutos from "@/views/usuario/UsuarioProdutos.vue";
+import UsuarioVendas from "@/views/usuario/UsuarioVendas.vue";
+import UsuarioCompras from "@/views/usuario/UsuarioCompras";
+import UsuarioEditar from "@/views/usuario/UsuarioEditar";
+import PaginaNaoEncontrada from "@/views/pagina-nao-encontrada/PaginaNaoEncontradaViews.vue";
 
-Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: () => import('@/views/pages/home/HomeNavigationViews.vue'),
-  },
-  {
-    path: '/homeUser',
-    name: 'homeUser',
-    component: () => import('@/components/auth-components/home-user/HomeUserComponent.vue'),
-    meta: {
-      requireAuth: true,
-    },
-  },
-  {
-    path: '/contato',
-    name: 'ContatoComponent',
-    component: () => import('@/components/navigation-components/contato/ContatoComponent.vue'),
-  },
-  {
-    path: '/ajuda',
-    name: 'Ajuda',
-    component: () => import('@/views/pages/ajuda/Ajuda.vue'),
-  },
-  {
-    path: '/produto/:referencia',
-    name: 'Produto',
-    component: () => import('@/views/pages/produto/ProdutoViews.vue'),
-    props: true
-  },
-  {
-    path: '/login',
-    name: 'HomeLogin',
-    component: () => import('@/views/pages/login/LoginViews.vue'),
-    /*
-    meta: {
-      requireAuth: true,
-    },
-    */
-  },
-  {
-    path: '/register',
-    name: 'HomeRegister',
-    component: () => import('@/views/pages/HomeRegister.vue'),
-  },
-  {
-    path: '/sobre',
-    name: 'SobreComponent',
-    component: () => import('@/components/navigation-components/sobre/SobreComponent.vue'),
-  },
-  {
-    path: '/politica-privacidade',
-    name: 'PoliticaPrivacidade',
-    component: () => import('@/views/pages/politica-privacidade/PoliticaPrivacidade.vue'),
-  },
-  {
-    path: '/register',
-    name: 'RegisterComponent',
-    component: () => import('@/components/auth-components/register/RegisterComponent.vue'),
-  },
-];
+Vue.use(Router);
 
-const router = new VueRouter({
-  mode: 'history',
+const router = new Router({
+  mode: "history",
   base: process.env.BASE_URL,
-  routes,
+  routes: [
+    {
+      path: "*",
+      component: PaginaNaoEncontrada
+    },
+    {
+      path: "/",
+      name: "home",
+      component: Home
+    },
+    {
+      path: "/produto/:id",
+      name: "produto",
+      component: Produto,
+      props: true
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: Login
+    },
+    {
+      path: "/usuario",
+      component: Usuario,
+      meta: {
+        login: true
+      },
+      children: [
+        {
+          path: "",
+          name: "usuario",
+          component: UsuarioProdutos
+        },
+        {
+          path: "compras",
+          name: "compras",
+          component: UsuarioCompras
+        },
+        {
+          path: "vendas",
+          name: "vendas",
+          component: UsuarioVendas
+        },
+        {
+          path: "editar",
+          name: "usuario-editar",
+          component: UsuarioEditar
+        }
+      ]
+    }
+  ],
+  scrollBehavior() {
+    return window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.login)) {
+    if (!window.localStorage.token) {
+      next("/login");
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
 
 // Lógica inerente ao NProgress
 router.beforeResolve((to, from, next) => {

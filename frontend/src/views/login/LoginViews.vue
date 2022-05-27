@@ -11,7 +11,7 @@
     </form>
     <p class="perdeu">
       <a
-        href="http://ranekapilocal.local/wp-login.php?action=lostpassword"
+        href="https://api.djob.com.br/wp-login.php?action=lostpassword"
         target="_blank"
       >Perdeu a senha? Clique aqui.</a>
     </p>

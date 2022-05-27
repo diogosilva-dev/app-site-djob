@@ -21,7 +21,8 @@
     "vue-router": "^3.5.1",
     "vue2-leaflet": "^2.7.1",
     "vuelidate": "^0.7.7",
-    "vueperslides": "^2.15.2"
+    "vueperslides": "^2.15.2",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

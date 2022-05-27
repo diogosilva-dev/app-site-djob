@@ -1,4 +1,4 @@
-import { api } from "@/services.js";
+import { api } from "@/services/Api.js";
 
 export default {
   name: "ProdutoAdicionar",

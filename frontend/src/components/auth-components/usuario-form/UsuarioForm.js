@@ -1,5 +1,5 @@
 import { mapFields } from "@/helpers.js";
-import { getCep } from "@/services/Api.js";
+import { getCep } from "@/services/BuscaCep";
 
 export default {
   computed: {

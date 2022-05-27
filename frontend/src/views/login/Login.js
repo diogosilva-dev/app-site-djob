@@ -1,4 +1,4 @@
-import LoginCriar from "@/components/auth-components/login/LoginComponent.vue";
+import LoginCriar from "@/components/auth-components/login/LoginCriarComponent.vue";
 
 export default {
   name: "Login",

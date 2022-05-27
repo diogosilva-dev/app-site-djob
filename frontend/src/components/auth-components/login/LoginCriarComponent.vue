@@ -11,7 +11,7 @@
   </section>
 </template>
 
-<script src="./Login.js"></script>
+<script src="./LoginCriar.js"></script>
 
 <style scoped>
 h2 {

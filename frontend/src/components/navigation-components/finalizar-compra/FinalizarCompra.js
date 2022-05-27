@@ -1,6 +1,6 @@
 import UsuarioForm from "@/components/auth-components/usuario-form/UsuarioFormComponent.vue";
 import { api } from "@/services/Api.js";
-import { mapState } from "Vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "FinalizarCompra",

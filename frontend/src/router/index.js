@@ -8,7 +8,15 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/views/pages/home/HomeNavigation.vue'),
+    component: () => import('@/views/pages/home/HomeNavigationViews.vue'),
+  },
+  {
+    path: '/homeUser',
+    name: 'homeUser',
+    component: () => import('@/components/auth-components/home-user/HomeUserComponent.vue'),
+    meta: {
+      requireAuth: true,
+    },
   },
   {
     path: '/contato',
@@ -23,13 +31,13 @@ const routes = [
   {
     path: '/produto/:referencia',
     name: 'Produto',
-    component: () => import('@/views/pages/produto/Produto.vue'),
+    component: () => import('@/views/pages/produto/ProdutoViews.vue'),
     props: true
   },
   {
     path: '/login',
     name: 'HomeLogin',
-    component: () => import('@/views/pages/home/HomeLogin.vue'),
+    component: () => import('@/views/pages/login/LoginViews.vue'),
     /*
     meta: {
       requireAuth: true,
@@ -39,12 +47,7 @@ const routes = [
   {
     path: '/register',
     name: 'HomeRegister',
-    component: () => import('@/views/pages/home/HomeRegister.vue'),
-    /*
-    meta: {
-      requireAuth: true,
-    },
-    */
+    component: () => import('@/views/pages/HomeRegister.vue'),
   },
   {
     path: '/sobre',

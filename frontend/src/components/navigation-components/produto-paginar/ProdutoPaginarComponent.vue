@@ -7,4 +7,4 @@
     </ul>
 </div>
 </template>
-<script src="./Paginacao.js"></script>
+<script src="./ProdutoPaginar.js"></script>

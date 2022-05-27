@@ -9,8 +9,9 @@
 <script>
   import HeaderComponent from "@/components/navigation-components/header/HeaderComponent.vue";
   import FooterComponent from '@/components/navigation-components/footer/FooterComponent.vue';
-
   import 'vueperslides/dist/vueperslides.css'
+  import { api } from "@/services/Api.js";
+  
   export default {
     data(){
       return{
@@ -21,11 +22,18 @@
       HeaderComponent,
       FooterComponent
     },
-    methods: {
-      alertar(){
-        console.log(this.$router.options.base);
+    created() {
+      if (window.localStorage.token) {
+        api
+          .validateToken()
+          .then(() => {
+            this.$store.dispatch("getUsuario");
+          })
+          .catch(() => {
+            window.localStorage.removeItem("token");
+          });
       }
-    },
+    }
   }
 </script>
 

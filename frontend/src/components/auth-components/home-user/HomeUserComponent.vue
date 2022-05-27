@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand">JWT + Node + Vue</a>
+        <a class="navbar-brand">Seja bem vindo novamente {{formUser.name}}</a>
 
         <div
           class="collapse navbar-collapse justify-content-end"
@@ -31,6 +31,6 @@
   </div>
 </template>
 
-<script src="./Home.js"></script>
+<script src="./HomeUser.js"></script>
 
 <style src="" scoped></style>

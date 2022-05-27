@@ -9,62 +9,36 @@
         <form
           v-on:submit.prevent="registerSubmitUserForm()"
         >
-          <!--INÍCIO BLOCO: Nome-->
+          <!--INÍCIO BLOCO: nome-->
           <div class="form-group">
             <label for="nome">
               <input
                 type="text"
                 id="nome"
-                name="nome"
-                class=""
-                placeholder="Nome:"
-                v-model="registerForm.name"
+                nome="nome"
+                placeholder="Nome completo:"
+                v-model="registerForm.nome"
                 :class="{
-                  'is-invalid': isSubmitted && $v.registerForm.name.$error,
+                  'is-invalid': isSubmitted && $v.registerForm.nome.$error,
                 }"
               />
             </label>
             <div
-              v-if="isSubmitted && !$v.registerForm.name.required"
+              v-if="isSubmitted && !$v.registerForm.nome.required"
               class="invalid-feedback"
             >
               O campo nome é obrigatório!
             </div>
           </div>
-          <!--FIM BLOCO: Nome-->
+          <!--FIM BLOCO: nome-->
 
-          <!--INÍCIO BLOCO: Sobrenome-->
-          <div class="form-group">
-            <label for="sobrenome">
-              <input
-                type="text"
-                id="sobrenome"
-                name="sobrenome"
-                class=""
-                placeholder="Sobrenome:"
-                v-model="registerForm.sobrenome"
-                :class="{
-                  'is-invalid': isSubmitted && $v.registerForm.sobrenome.$error,
-                }"
-              />
-            </label>
-            <div
-              v-if="isSubmitted && !$v.registerForm.sobrenome.required"
-              class="invalid-feedback"
-            >
-              O campo nome é obrigatório!
-            </div>
-          </div>
-          <!--FIM BLOCO: Sobrenome-->
-
-          <!--INÍCIO BLOCO: E-mail-->
+          <!--INÍCIO BLOCO: Email-->
           <div class="form-group">
             <label for="email">
               <input
-                type="email"
+                type="text"
                 id="email"
-                name="email"
-                class=""
+                email="nome"
                 placeholder="E-mail:"
                 v-model="registerForm.email"
                 :class="{
@@ -73,95 +47,44 @@
               />
             </label>
             <div
-              v-if="isSubmitted && !$v.registerForm.email.$error"
-              class="invalid-feedback"
-            >
-              <span v-if="!$v.registerForm.email.required"
-                >O campo e-mail é obrigatório!</span
-              >
-              <span v-if="!$v.registerForm.email.email">E-mail inválido!</span>
-            </div>
-          </div>
-          <!--FIM BLOCO: E-mail-->
-
-          <!--INÍCIO BLOCO: dataNacimento-->
-          <div class="form-group">
-            <label for="dataNacimento">
-              <input
-                onfocus="(this.type='date')"
-                onblur="(this.type='text')"
-                type="text"
-                id="dataNacimento"
-                name="dataNacimento"
-                class=""
-                placeholder="Data de Nascimento:"
-                v-model="registerForm.dataNacimento"
-                :class="{
-                  'is-invalid': isSubmitted && $v.registerForm.dataNacimento.$error,
-                }"
-              />
-            </label>
-            <div
-              v-if="isSubmitted && !$v.registerForm.dataNacimento.required"
+              v-if="isSubmitted && !$v.registerForm.email.required"
               class="invalid-feedback"
             >
               O campo nome é obrigatório!
             </div>
           </div>
-          <!--FIM BLOCO: dataNacimento-->
+          <!--FIM BLOCO: Nome-->
 
-          <!--INÍCIO BLOCO: whatsapp-->
-          <div class="form-group">
-            <label for="whatsapp">
-              <input
-                type="phone"
-                id="whatsapp"
-                name="whatsapp"
-                class=""
-                placeholder="Whatsapp:"
-                v-model="registerForm.whatsapp"
-                :class="{
-                  'is-invalid': isSubmitted && $v.registerForm.whatsapp.$error,
-                }"
-              />
-            </label>
-            <div
-              v-if="isSubmitted && !$v.registerForm.whatsapp.required"
-              class="invalid-feedback"
-            >
-              O campo nome é obrigatório!
-            </div>
-          </div>
-          <!--FIM BLOCO: whatsapp-->
 
-          <!--INÍCIO BLOCO: Password-->
+
+          <!--INÍCIO BLOCO: senha-->
           <div class="form-group">
-            <label for="password">
+            <label for="senha">
               <input
-                type="password"
-                id="password"
-                name="password"
+                type="senha"
+                id="senha"
+                name="senha"
                 class=""
                 placeholder="Senha:"
-                v-model="registerForm.password"
+                v-model="registerForm.senha"
                 :class="{
-                  'is-invalid': isSubmitted && $v.registerForm.password.$error,
+                  'is-invalid': isSubmitted && $v.registerForm.senha.$error,
                 }"
               />
             </label>
             <div
-              v-if="isSubmitted && $v.registerForm.password.$error"
+              v-if="isSubmitted && $v.registerForm.senha.$error"
               class="invalid-feedback"
             >
-              <span v-if="!$v.registerForm.password.required"
+              <span v-if="!$v.registerForm.senha.required"
                 >O campo senha é obrigatório!</span
               >
-              <span v-if="!$v.registerForm.password.minLength"
+              <span v-if="!$v.registerForm.senha.minLength"
                 >A senha deve conter pelo menos 6 caracteres!</span
               >
             </div>
           </div>
-          <!--FIM BLOCO: Password-->
+          <!--FIM BLOCO: senha-->
           <div class="inscreva-se">
             <input type="checkbox" name="inscreva" id="inscreva">
             <p>Inscreva-se para receber e-mails de novidades da D.JOB
@@ -246,5 +169,10 @@
     font-weight: bold;
     color: #6DADB7;
     transition: all 0.5s;
+  }
+
+  .invalid-feedback{
+    color: red;
+    font-size: 12px;
   }
 </style>

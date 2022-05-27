@@ -13,20 +13,24 @@
           </router-link>
         </div>
         <div class="main">
-          <ProdutosComponent />
+          <ProdutosBuscar/>
+          <ProdutosLista/>
         </div>
     </div>
 </template>
 
 <script>
 import SliderHeaderComponent from '@/components/navigation-components/slider-header/SliderHeaderComponent.vue'
-import ProdutosComponent from '@/components/navigation-components/produtos/ProdutosComponent.vue'
+import ProdutosBuscar from "@/components/navigation-components/produto-buscar/ProdutoBuscarComponent.vue";
+import ProdutosLista from "@/components/navigation-components/produtos-lista/ProdutosListaComponent.vue";
 
 
 export default {
+  name: "home",
   components: {
     SliderHeaderComponent,
-    ProdutosComponent
+    ProdutosBuscar,
+    ProdutosLista
   },
 };
 </script>

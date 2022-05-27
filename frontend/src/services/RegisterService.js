@@ -2,15 +2,11 @@ import swal from 'sweetalert';
 import { api } from './Api';
 
 export default {
-  /**
-    * Método responsável por criar um novo Registro de Usuário (new Register User)
-    * (POST): localhost:3000/api/v1/register
-    */
   async registerNewUser(newUser) {
     try {
-      const response = await api.post('/register', newUser);
+      const response = await api.post('/usuario', newUser);
+      console.log('resposta', response);
       const { token } = response.data;
-
       if (token) {
         localStorage.setItem('jwt', token);
         swal({
@@ -22,7 +18,7 @@ export default {
     } catch (error) {
       swal({
         title: 'Oops!',
-        text: 'Alguma coisa deu errado aqui!',
+        text: 'Alguma coisa deu errado aqui no register service!',
         icon: 'error',
       });
     }

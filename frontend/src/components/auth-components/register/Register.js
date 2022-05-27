@@ -7,18 +7,18 @@ export default {
   data() {
     return {
       registerForm: {
-        name: null,
         email: null,
-        password: null,
+        senha: null,
+        nome: null,
       },
       isSubmitted: false,
     };
   },
   validations: {
     registerForm: {
-      name: { required },
-      email: { required },
-      password: { required, minLength: minLength(6) },
+      nome: {required},
+      email: {required},
+      senha: { required, minLength: minLength(6) },
     },
   },
   methods: {
@@ -27,7 +27,6 @@ export default {
     async submitRegisterUser() {
       try {
         this.isSubmitted = true;
-
         this.$v.$touch();
         if (this.$v.$invalid) {
           swal({
@@ -38,7 +37,8 @@ export default {
           return;
         }
         await RegisterService.registerNewUser(this.registerForm);
-        this.$router.push('/');
+        console.log('registrou', this.registerForm);
+        this.$router.push('/homeUser');
       } catch (error) {
         swal({
           title: 'Oops!',

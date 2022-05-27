@@ -1,8 +1,7 @@
-import VueJwtDEcode from 'vue-jwt-decode';
-import Api from '../../../services/Api';
+import { api } from '@/services/Api';
 
 export default {
-  name: 'HomeComponent',
+  name: 'HomeUserComponent',
   data() {
     return {
       formUser: {
@@ -12,10 +11,9 @@ export default {
     };
   },
   methods: {
-    getUser() {
-      const token = localStorage.getItem('jwt');
-      const tokenDecode = VueJwtDEcode.decode(token);
-      this.formUser = tokenDecode;
+    async getUser() {
+      const response = await api.get('/usuario')
+      console.log(response);
     },
     logOutUser() {
       localStorage.removeItem('jwt');

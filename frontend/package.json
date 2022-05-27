@@ -12,7 +12,7 @@
   "dependencies": {
     "@mdi/js": "^6.6.96",
     "axios": "^0.27.2",
-    "core-js": "^3.8.3",
+    "core-js": "^3.22.7",
     "leaflet": "^1.8.0",
     "mdi-vue": "^3.0.12",
     "nprogress": "^0.2.0",

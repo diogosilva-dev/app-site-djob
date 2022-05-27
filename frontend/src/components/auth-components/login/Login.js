@@ -1,50 +1,32 @@
-import swal from 'sweetalert';
-import { required } from 'vuelidate/lib/validators';
-import LoginService from '@/services/LoginService';
+import UsuarioForm from "@/components/auth-components/usuario-form/UsuarioFormComponent.vue";
 
 export default {
-  name: 'LoginComponent',
+  name: "LoginCriar",
+  components: {
+    UsuarioForm
+  },
   data() {
     return {
-      loginForm: {
-        email: null,
-        password: null,
-      },
-      isSubmitted: false,
+      criar: false,
+      erros: []
     };
   },
-  validations: {
-    loginForm: {
-      email: { required },
-      password: { required },
-    },
-  },
   methods: {
-    loginSubmitUserForm() {},
-
-    async submitLoginUser() {
+    async criarUsuario(event) {
+      this.erros = [];
+      const button = event.currentTarget;
+      button.value = "Criando...";
+      button.setAttribute("disabled", "");
       try {
-        this.isSubmitted = true;
-
-        this.$v.$touch();
-        if (this.$v.$invalid) {
-          swal({
-            title: 'Oops!',
-            text: 'Você precisa incluir todos os campos obrigatórios!',
-            icon: 'error',
-          });
-          return;
-        }
-
-        await LoginService.loginUser(this.loginForm);
-        this.$router.push('/home');
+        await this.$store.dispatch("criarUsuario", this.$store.state.usuario);
+        await this.$store.dispatch("logarUsuario", this.$store.state.usuario);
+        await this.$store.dispatch("getUsuario");
+        this.$router.push({ name: "usuario" });
       } catch (error) {
-        swal({
-          title: 'Senha Incorreta!',
-          text: 'Digite a senha cadastrada!',
-          icon: 'error',
-        });
+        button.removeAttribute("disabled");
+        button.value = "Criar Usuário";
+        this.erros.push(error.response.data.message);
       }
-    },
-  },
+    }
+  }
 };

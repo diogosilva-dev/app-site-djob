@@ -1,58 +1,124 @@
 <template>
-  <section class="login">
-    <h1>Login</h1>
+  <section class="container">
+    <div class="logo">
+      <router-link to="/"><img src="@/assets/logo-djob-verde.svg" alt=""></router-link>
+    </div>
+    <h1>SUA CONTA PARA TUDO DA D.JOB</h1>
     <form>
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" v-model="login.email">
-      <label for="senha">Senha</label>
-      <input type="password" name="senha" id="senha" v-model="login.senha">
-      <button class="btn" @click.prevent="logar">Logar</button>
-      <ErroNotificacao :erros="erros"/>
+
+      <div class="form-group">
+        <label for="email">
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="E-mail:"
+            v-model="login.email"
+            :class="{
+              'is-invalid': isSubmitted && $v.login.email.$error,
+            }"
+          />
+        </label>
+        <div
+          v-if="isSubmitted && !$v.login.email.required"
+          class="invalid-feedback"
+        >
+          O campo e-mail é obrigatório!
+        </div>
+      </div>
+
+      <div class="form-group">
+            <label for="password">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class=""
+                placeholder="Senha:"
+                v-model="login.senha"
+                :class="{
+                  'is-invalid': isSubmitted && $v.login.senha.$error,
+                }"
+              />
+            </label>
+            <div
+              v-if="isSubmitted && !$v.login.senha.required"
+              class="invalid-feedback"
+            >
+              O campo password é obrigatório!
+            </div>
+          </div>
+            <p class="perdeu">
+              Perdeu a senha?
+              <a
+                href="https://api.djob.com.br/wp-login.php?action=lostpassword"
+                target="_blank"
+              >Clique aqui.</a>
+            </p>
+            <button
+              @click.prevent="logar"
+            >
+              Entrar
+            </button>
+            <!--FIM BLOCO: Password-->
+            <p class="center">
+              Não tem uma conta cadastrada?<router-link to="/cadastrar">
+                Junte-se a nós</router-link
+              >
+            </p>
+            <!-- <ErroNotificacao :erros="erros"/> -->
     </form>
-    <p class="perdeu">
-      <a
-        href="https://api.djob.com.br/wp-login.php?action=lostpassword"
-        target="_blank"
-      >Perdeu a senha? Clique aqui.</a>
-    </p>
-    <LoginCriar/>
   </section>
 </template>
 
 <script src="./Login.js"></script>
 
 <style scoped>
-.login {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+  .container{
+    display: grid;
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 
-h1 {
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 40px;
-  color: #87f;
-}
+  form{
+    max-width: 400px;
+  }
+  .logo{
+    text-align: center;
+    width: 200px;
+    justify-self: center;
+    margin: 20px;
+  }
 
-form {
-  display: grid;
-}
+  .inscreva-se{
+    display: flex;
+    align-items: center;
+  }
 
-.btn {
-  width: 100%;
-  max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-.perdeu {
-  text-align: center;
-  margin: 20px auto 0 auto;
-}
+  p{
+    font-size: 14px;
+    margin: 20px;
+  }
 
-.perdeu a:hover {
-  color: #87f;
-  text-decoration: underline;
-}
+  a{
+    text-decoration: underline;
+    font-weight: bold;
+    color: #666;
+    transition: all 0.5s;
+  }
+
+   a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+    color: #6DADB7;
+    transition: all 0.5s;
+  }
+
+  .invalid-feedback{
+    color: red;
+    font-size: 12px;
+  }
 </style>

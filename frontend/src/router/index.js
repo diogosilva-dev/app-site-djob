@@ -4,6 +4,9 @@ import NProgress from 'nprogress';
 import Home from "@/views/home/HomeNavigationViews";
 import Produto from "@/views/produto/ProdutoViews.vue";
 import Login from "@/views/login/LoginViews.vue";
+import CadastrarUsuario from "@/views/cadastrar-usuario/CadastrarUsuarioViews.vue";
+import Ajuda from "@/views/ajuda/AjudaViews.vue";
+import ContatoComponent from "@/components/navigation-components/contato/ContatoComponent.vue";
 import Usuario from "@/views/usuario/Usuario";
 import UsuarioProdutos from "@/views/usuario/UsuarioProdutos.vue";
 import UsuarioVendas from "@/views/usuario/UsuarioVendas.vue";
@@ -28,6 +31,16 @@ const router = new Router({
       component: Home
     },
     {
+      path: "/contato",
+      name: "ContatoComponent",
+      component: ContatoComponent
+    },
+    {
+      path: "/ajuda",
+      name: "Ajuda",
+      component: Ajuda
+    },
+    {
       path: "/produto/:id",
       name: "produto",
       component: Produto,
@@ -37,6 +50,10 @@ const router = new Router({
       path: "/login",
       name: "login",
       component: Login
+    },{
+      path: "/cadastrar",
+      name: "CadastrarUsuario",
+      component: CadastrarUsuario
     },
     {
       path: "/usuario",

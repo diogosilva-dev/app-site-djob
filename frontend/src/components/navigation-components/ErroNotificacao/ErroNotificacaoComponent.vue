@@ -14,7 +14,7 @@
     }
 
     .erro li {
-    color: #e80;
+    color: rgb(238, 0, 0);
     text-align: center;
     }
 </style>

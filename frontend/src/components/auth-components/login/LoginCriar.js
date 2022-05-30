@@ -1,9 +1,9 @@
-import UsuarioForm from "@/components/auth-components/usuario-form/UsuarioFormComponent.vue";
+import UsuarioFormComponent from "@/components/auth-components/usuario-form/UsuarioFormComponent.vue";
 
 export default {
   name: "LoginCriar",
   components: {
-    UsuarioForm
+    UsuarioFormComponent
   },
   data() {
     return {

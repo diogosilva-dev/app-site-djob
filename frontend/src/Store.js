@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+
 import { api } from "@/services/Api.js";
 Vue.use(Vuex);
 

@@ -6,7 +6,7 @@
       <h1>SUA CONTA PARA TUDO DA D.JOB</h1>
     <!-- <ErroNotificacao :erros="erros"/> -->
     <transition mode="out-in">
-      <UsuarioFormComponent>
+      <UsuarioFormComponent ref="UsuarioFormComponent"> 
         <button class="btn btn-form" @click.prevent="criarUsuario">Criar Usuário</button>
       </UsuarioFormComponent>
     </transition>

@@ -1,64 +1,60 @@
 <template>
-    <transition name="bounce" appear>
-        
-        <header>
-            <div class="header-superior">
-                <p>FRETE GRÁTIS PARA O DF EM TODOS OS PEDIDOS ACIMA DE R$ 500</p>
-                <div class="redes-sociais">
-                    <a href=" https://wa.me/5561998148954?text=Olá,%20fui%20redirecionado(a)%20pelo%20site%20e%20gostaria%20de%20mais%20informações."
-                        alt="whatsapp"
-                        target="_blank">
-                        <mdicon class="icon" name="Whatsapp" />
-                    </a>
-                    <a href="mailto: comercial@djob.com.br"
-                        alt="email"
-                        target="_blank">
-                        <mdicon class="icon" name="EmailMarkAsUnread" />
-                    </a>
+    <header key="header">
+        <div class="header-superior" key="header-superior">
+            <p>FRETE GRÁTIS PARA O DF EM TODOS OS PEDIDOS ACIMA DE R$ 500</p>
+            <div class="redes-sociais">
+                <a href=" https://wa.me/5561998148954?text=Olá,%20fui%20redirecionado(a)%20pelo%20site%20e%20gostaria%20de%20mais%20informações."
+                    alt="whatsapp"
+                    target="_blank">
+                    <mdicon class="icon" name="Whatsapp" />
+                </a>
+                <a href="mailto: comercial@djob.com.br"
+                    alt="email"
+                    target="_blank">
+                    <mdicon class="icon" name="EmailMarkAsUnread" />
+                </a>
                     <a href="https://www.facebook.com/djobtextil"
-                        alt="facebook"
-                        target="_blank">
-                        <mdicon class="icon" name="Facebook" />
-                    </a>
+                    alt="facebook"
+                    target="_blank">
+                    <mdicon class="icon" name="Facebook" />
+                </a>
                     <a href="https://www.instagram.com/djobtextil/"
-                        alt="instagran"
-                        target="_blank">
-                        <mdicon class="icon" name="Instagram" />
-                    </a>
+                    alt="instagran"
+                    target="_blank">
+                    <mdicon class="icon" name="Instagram" />
+                </a>
                     <a href="https://www.linkedin.com/in/diogo-silva-174b36213/"
-                        alt="linkedin"
-                        target="_blank">
-                        <mdicon class="icon" name="Linkedin" />
-                    </a>
-                    <a href="tel:+556135349139"
-                        alt="telefone"
-                        target="_blank">
-                        <mdicon class="icon" name="PhoneInTalk" />
-                    </a>
-                </div>
-                <div class="btns-contatos">
-                    <a @click="handleClick">NEWSLATTER</a>
-                    <router-link to="/contato">CONTATO</router-link>
-                    <router-link to="/ajuda">AJUDA</router-link>
-                </div>
+                    alt="linkedin"
+                    target="_blank">
+                    <mdicon class="icon" name="Linkedin" />
+                </a>
+                <a href="tel:+556135349139"
+                    alt="telefone"
+                    target="_blank">
+                    <mdicon class="icon" name="PhoneInTalk" />
+                </a>
             </div>
-            <div class="header-centro">
-                <BuscarComponent class="search-bar" :class="{'open-search-bar' : isModalActive}" />
-                <NewslatterComponent ref="NewslatterComponent"/>
-                <div class="btns-conta">
-                    <router-link to="/login"><mdicon class="icon" name="AccountLockOpenOutline" /></router-link>
-                    <router-link to="/"><mdicon class="icon" name="BookHeartOutline" /></router-link>
-                    <router-link to="/"><mdicon class="icon" name="CartHeart" /> </router-link>
-                </div>
+    
+            <div class="btns-contatos" key="btn-contatos">
+                <a @click="handleClick">NEWSLATTER</a>
+                <router-link to="/contato">CONTATO</router-link>
+                <router-link to="/ajuda">AJUDA</router-link>
             </div>
-            <div class="detalhe-header">
-                <router-link to="/" class="logo"><img src="@/assets/logo-djob.svg" alt="Logo Djob"></router-link>
+        </div>
+        <div class="header-centro" key="header-centro">
+            <BuscarComponent class="search-bar" />
+            <NewslatterComponent ref="NewslatterComponent"/>
+            <div class="btns-conta">
+                <router-link to="/login"><mdicon class="icon" name="AccountLockOpenOutline" /></router-link>
+                <router-link to="/"><mdicon class="icon" name="BookHeartOutline" /></router-link>
+                <router-link to="/"><mdicon class="icon" name="CartHeart" /> </router-link>
             </div>
-        </header>
-    </transition>
+        </div>
+        <div class="detalhe-header" key="detalhe-header">
+            <router-link to="/" class="logo"><img src="@/assets/logo-djob.svg" alt="Logo Djob"></router-link>
+        </div>
+    </header>
 </template>
-
-
 
 <script src="./Header.js"></script>
 

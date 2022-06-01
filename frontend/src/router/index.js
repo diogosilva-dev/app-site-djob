@@ -1,17 +1,20 @@
 import Vue from "vue";
 import Router from "vue-router";
-import NProgress from 'nprogress';
+import NProgress from 'nprogress'; //VER DEPOIS
 import Home from "@/views/home/HomeNavigationViews";
 import Produto from "@/views/produto/ProdutoViews.vue";
 import Login from "@/views/login/LoginViews.vue";
-import CadastrarUsuario from "@/views/cadastrar-usuario/CadastrarUsuarioViews.vue";
+import CadastroUsuario from "@/views/cadastrar-usuario/CadastrarUsuarioViews.vue";
 import Ajuda from "@/views/ajuda/AjudaViews.vue";
-import ContatoComponent from "@/components/navigation-components/contato/ContatoComponent.vue";
+import Contato from "@/views/contato/ContatoViews.vue";
 import Usuario from "@/views/usuario/Usuario";
 import UsuarioProdutos from "@/views/usuario/UsuarioProdutos.vue";
 import UsuarioVendas from "@/views/usuario/UsuarioVendas.vue";
 import UsuarioCompras from "@/views/usuario/UsuarioCompras";
 import UsuarioEditar from "@/views/usuario/UsuarioEditar";
+import Sobre from "@/views/sobre/SobreViews.vue";
+import PoliticaPrivacidade from "@/views/politica-privacidade/PoliticaPrivacidade.vue";
+import Revendedor from "@/views/revendedor/RevendedorViews.vue";
 import PaginaNaoEncontrada from "@/views/pagina-nao-encontrada/PaginaNaoEncontradaViews.vue";
 
 
@@ -32,8 +35,8 @@ const router = new Router({
     },
     {
       path: "/contato",
-      name: "ContatoComponent",
-      component: ContatoComponent
+      name: "Contato",
+      component: Contato
     },
     {
       path: "/ajuda",
@@ -41,19 +44,19 @@ const router = new Router({
       component: Ajuda
     },
     {
-      path: "/produto/:id",
-      name: "produto",
-      component: Produto,
-      props: true
-    },
-    {
       path: "/login",
       name: "login",
       component: Login
     },{
-      path: "/cadastrar",
-      name: "CadastrarUsuario",
-      component: CadastrarUsuario
+      path: "/cadastro",
+      name: "CadastroUsuario",
+      component: CadastroUsuario
+    },
+    {
+      path: "/produto/:id",
+      name: "produto",
+      component: Produto,
+      props: true
     },
     {
       path: "/usuario",
@@ -83,6 +86,21 @@ const router = new Router({
           component: UsuarioEditar
         }
       ]
+    },
+    {
+      path:"/sobre",
+      name: "sobre",
+      component: Sobre
+    },
+    {
+      path:"/politica-privacidade",
+      name: "PoliticaPrivacidade",
+      component: PoliticaPrivacidade
+    },
+    {
+      path:"/revendedor",
+      name: "Revendedor",
+      component: Revendedor
     }
   ],
   scrollBehavior() {

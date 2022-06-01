@@ -1,13 +1,27 @@
 <template>
   <section class="produtos-container">
     <transition mode="out-in">
-      <div v-if="produtos && produtos.length" class="produtos" key="produtos">
-        <div class="produto" v-for="(produto, index) in produtos" :key="index">
+      <div class="content" v-if="produtos && produtos.length">
+        <div class="produtos" v-for="(produto, index) in produtos" :key="index">
+          <button class="favorite-btn"><mdicon class="icon" name="HeartOutline" /></button>
+          <!-- <button class="cart-btn"><mdicon class="icon" name="CartArrowDown" /></button> -->
           <router-link :to="{name: 'produto', params: {id: produto.id}}">
-            <img v-if="produto.fotos" :src="produto.fotos[0].src" :alt="produto.fotos[0].titulo">
-            <p class="preco">{{produto.preco | numeroPreco}}</p>
-            <h2 class="titulo">{{produto.nome}}</h2>
-            <p>{{produto.descricao}}</p>
+            <div class="box-produto">
+                <div class="box-image">
+                    <img v-if="produto.fotos" :src="produto.fotos[0].src" :alt="produto.fotos[0].titulo">
+                </div>
+                <div class="color-bar" >
+                    <ul>
+                        <li v-for="cores in produto.cores" :key="cores" :style="{'background-color':cores}"></li>
+                    </ul>
+                </div>
+                <div class="referency-bar">
+                    <h3>{{produto.referenciaProduto}}</h3>
+                </div>
+                <div class="title-product">
+                    <h2>{{produto.tituloProduto}}</h2>
+                </div>
+            </div>
           </router-link>
         </div>
         <ProdutosPaginar :produtosTotal="produtosTotal" :produtosPorPagina="produtosPorPagina"/>
@@ -23,56 +37,117 @@
 <script src="./ProdutosLista.js"></script>
 
 <style scoped>
-.produtos-container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
 
-.produtos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
-  margin: 30px;
-}
+    .content{
+        display: flex;
+        overflow: hidden;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .category-bar{
+        color: #fff;
+        font-weight: 500;
+        background-color: #EC5466;
+        font-size: 14px;
+        border-radius: 0 10px 10px 0;
+        text-transform: uppercase;
+        padding: 20px;
+        width: fit-content;
+    }
 
-@media screen and (max-width: 500px) {
-  .produtos {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-    margin: 10px;
-  }
-}
+    .produtos{
+        width: 300px;
+    }
 
-.produto {
-  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
-  padding: 10px;
-  background: #fff;
-  border-radius: 4px;
-  transition: all 0.2s;
-}
+    .favorite-btn{
+        position: relative;
+        border-radius: 100px;
+        background-color: #EC5466;
+        padding: 3px;
+        top: 46px;
+        left: 13px;
+        color: #fff;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+    }
 
-.produto:hover {
-  box-shadow: 0 6px 12px rgba(30, 60, 90, 0.2);
-  transform: scale(1.1);
-  position: relative;
-  z-index: 1;
-}
+    .cart-btn{
+        position: relative;
+        border-radius: 100px;
+        background-color: #548F98;
+        padding: 6px;
+        top: 400px;
+        left: 206px;
+        color: #fff;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+    }
 
-.produto img {
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
+    .box-produto{
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 1px 12px 3px #c1c1c1;
+        overflow: hidden;
+        margin: 20px;
+    }
 
-.titulo {
-  margin-bottom: 10px;
-}
+    .box-image{
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 8px 10px #c1c1c1;
+        overflow: hidden;
+        padding: 20px;
+        min-height: 260px;
+    }
 
-.preco {
-  color: #e80;
-  font-weight: bold;
-}
+    .color-bar{
+        display: flex;
+        justify-content: center;
+        margin-top: -20px;
+    }
 
-.sem-resultados {
-  text-align: center;
-}
+    .color-bar ul {
+        display: flex;
+        background-color: #fff;
+        box-shadow: 0 4px 24px #c1c1c1;
+        align-items: center;
+        border-radius: 10px;
+        padding: 5px;
+        justify-content: center;
+    }
+
+    .color-bar ul li {
+        width: 15px;
+        height: 15px;
+        border-radius: 20px;
+        box-shadow: 1px 2px 6px #666;
+        margin: 4px;
+    }
+
+    .referency-bar{
+        width: 50%;
+        padding: 10px 20px;
+        background-color: #548F98;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        margin-top: 40px;
+    }
+
+    h2{
+        font-weight: 500;
+        color: #548f98;
+        line-height: 18px;
+    }
+
+    h3{
+        color: #fff;
+        font-weight: 300;
+    }
+
+    .title-product{
+        padding: 20px 30px;
+    }
 </style>

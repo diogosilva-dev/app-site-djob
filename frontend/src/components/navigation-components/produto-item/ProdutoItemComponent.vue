@@ -1,11 +1,11 @@
 <template>
   <div class="produto" v-if="produto">
     <router-link class="produto-img" :to="{name: 'produto', params: {id: produto.id}}">
-      <img v-if="produto.fotos" :src="produto.fotos[0].src" :alt="produto.fotos[0].titulo">
+      <img v-if="produto.fotos" :src="produto.fotos[0].src" :alt="produto.fotos[0].tituloProduto">
     </router-link>
     <div class="info">
-      <p class="preco">{{produto.preco | numeroPreco}}</p>
-      <h2 class="titulo">{{produto.nome}}</h2>
+      <p class="preco">{{produto.valorProduto | numeroPreco}}</p>
+      <h2 class="titulo">{{produto.tituloProduto}}</h2>
       <slot></slot>
     </div>
   </div>

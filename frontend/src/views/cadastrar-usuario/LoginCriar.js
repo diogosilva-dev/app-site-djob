@@ -1,12 +1,9 @@
 import UsuarioFormComponent from "@/components/auth-components/usuario-form/UsuarioFormComponent.vue";
-import UsuarioForm from "@/components/auth-components/usuario-form/UsuarioForm.js";
-
 
 export default {
   name: "LoginCriar",
   components: {
     UsuarioFormComponent,
-    UsuarioForm
   },
   data() {
     return {

@@ -1,6 +1,12 @@
 <template>
     <div class="slide">
-        <vueper-slides :infinite="false" :dragging-distance="50" autoplay progress>
+        <vueper-slides
+            :infinite="true"
+            :dragging-distance="50"
+            autoplay
+            progress
+            :alwaysRefreshClones="true"
+        >
         <vueper-slide
             v-for="(slide, i) in slides"
             :key="i"
@@ -16,10 +22,7 @@
 <script src="./SliderHeader.js"></script>
 
 <style scoped>
-.vueperslides__progress {
-  background: rgba(173, 173, 173, 0.9);
-  color: #ec5466;
-}
+
 
 .vueperslides {
     top: -20px;

@@ -62,7 +62,7 @@
             </button>
             <!--FIM BLOCO: Password-->
             <p class="center">
-              Não tem uma conta cadastrada?<router-link to="/cadastrar">
+              Não tem uma conta cadastrada?<router-link to="/cadastro">
                 Junte-se a nós</router-link
               >
             </p>

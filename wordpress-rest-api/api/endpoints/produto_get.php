@@ -21,9 +21,10 @@ function produto_scheme($slug) {
     $response = array(
       "id" => $slug, 
       "fotos" => $images_array,
-      "nome" => $post_meta['nome'][0],
-      "preco" => $post_meta['preco'][0],
-      "descricao" => $post_meta['descricao'][0],
+      'referenciaProduto' => $post_meta['referenciaProduto'][0],
+      "tituloProduto" => $post_meta['tituloProduto'][0],
+      "valorProduto" => $post_meta['valorProduto'][0],
+      "descricaoProduto" => $post_meta['descricaoProduto'][0],
       "vendido" => $post_meta['vendido'][0],
       "usuario_id" => $post_meta['usuario_id'][0],
     );
@@ -40,7 +41,7 @@ function api_produto_get($request) {
 }
 
 function registrar_api_produto_get() {
-  register_rest_route('api', '/produto/(?P<slug>[-\w]+)', array(
+  register_rest_route('api/v1', '/produto/(?P<slug>[-\w]+)', array(
     array(
       'methods' => WP_REST_Server::READABLE,
       'callback' => 'api_produto_get',

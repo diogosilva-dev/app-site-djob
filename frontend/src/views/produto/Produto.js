@@ -15,8 +15,9 @@ export default {
   },
   methods: {
     getProduto() {
-      api.get(`/produto/?q${this.id}`).then(response => {
+      api.get(`/produto/${this.id}`).then(response => {
         this.produto = response.data;
+        console.log(this.produto);
       });
     }
   },

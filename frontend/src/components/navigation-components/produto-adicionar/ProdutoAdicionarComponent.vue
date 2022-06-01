@@ -1,14 +1,23 @@
 <template>
   <form class="adicionar-produto">
-    <label for="nome">Nome</label>
-    <input id="nome" name="nome" type="text" v-model="produto.nome">
-    <label for="preco">Preço (R$)</label>
-    <input id="preco" name="preco" type="number" v-model="produto.preco">
-    <label for="fotos">Fotos</label>
+    
+    <label for="referenciaProduto">Referencia</label>
+    <input id="referenciaProduto" name="referenciaProduto" type="text" placeholder="Digite a referencia do produto" v-model="produto.referenciaProduto">
+
+    <label for="tituloProduto">Título</label>
+    <input id="tituloProduto" name="tituloProduto" type="text" placeholder="Digite o título do produto" v-model="produto.tituloProduto">
+
+    <label for="descricaoProduto">Descrição</label>
+    <input id="descricaoProduto" name="descricaoProduto" type="text" placeholder="Digite a descrição do produto" v-model="produto.descricaoProduto">
+
+    <label for="valorProduto">Preço (R$)</label>
+    <input id="valorProduto" name="valorProduto" type="number" placeholder="Digite o valor do produto" v-model="produto.valorProduto">
+
+    <label for="fotos">Imagens</label>
     <input id="fotos" name="fotos" type="file" multiple ref="fotos">
-    <label for="preco">Descrição</label>
-    <textarea id="preco" name="preco" v-model="produto.descricao"></textarea>
+
     <input class="btn" type="button" value="Adicionar Produto" @click.prevent="adicionarProduto">
+
   </form>
 </template>
 

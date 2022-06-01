@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <HeaderComponent v-if="$route.path !== '/login' && $route.path !== '/register'"/>
-    <router-view></router-view>
-    <FooterComponent v-if="$route.path !== '/login' && $route.path !== '/register'"/>
+    <HeaderComponent v-if="$route.path !== '/login' && $route.path !== '/cadastro'"/>
+      <router-view></router-view>
+    <FooterComponent v-if="$route.path !== '/login' && $route.path !== '/cadastro'"/>
   </div>
 </template>
 
@@ -127,6 +127,10 @@
     box-shadow: none;;
 }
 
+.vueperslides__progress {
+  color: #ec5466;
+}
+
 
   .swal-button,
   button{
@@ -177,4 +181,22 @@
     top: 0;
     left: 0;
   }
+
+.v-enter,
+.v-leave-to {
+  opacity: 0;
+}
+
+.v-enter {
+  transform: translate3d(0, -20px, 0);
+}
+
+.v-leave-to {
+  transform: translate3d(0, 20px, 0);
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.3s;
+}
 </style>

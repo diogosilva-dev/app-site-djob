@@ -1,12 +1,8 @@
 import swal from 'sweetalert';
 import { required } from 'vuelidate/lib/validators';
-import LoginCriar from "@/components/auth-components/login/LoginCriarComponent.vue";
 
 export default {
   name: "Login",
-  components: {
-    LoginCriar
-  },
   data() {
     return {
       login: {
@@ -27,7 +23,6 @@ export default {
     async logar() {
       this.isSubmitted = true;
       this.erros = [];
-
       this.$v.$touch();
         if (this.$v.$invalid) {
           swal({
@@ -43,8 +38,10 @@ export default {
         .dispatch("logarUsuario", this.login)
         .then(response => {
           this.$store.dispatch("getUsuario");
+          console.log(this.$store.dispatch("getUsuario"));
           this.$router.push({ name: "usuario" });
         })
+        
         .catch(error => {
           this.erros.push(error.response.data.message);
           swal({

@@ -31,7 +31,7 @@ export default {
   methods: {
     deslogar() {
       this.$store.dispatch("deslogarUsuario");
-      this.$router.push("/login");
+      this.$router.push("/");
     }
   }
 };

@@ -42,7 +42,6 @@ export default {
   },
   methods: {
     async validarForm(){
-      console.log(this.email);
       try {
         this.isSubmitted = true;
         this.$v.$touch();

@@ -5,9 +5,10 @@ function api_produto_post($request) {
   $user_id = $user->ID;
 
   if($user_id > 0) {
-    $nome = sanitize_text_field($request['nome']);
-    $preco = sanitize_text_field($request['preco']);
-    $descricao = sanitize_text_field($request['descricao']);
+    $referenciaProduto = sanitize_text_field($request['referenciaProduto']);
+    $tituloProduto = sanitize_text_field($request['tituloProduto']);
+    $valorProduto = sanitize_text_field($request['valorProduto']);
+    $descricaoProduto = sanitize_text_field($request['descricaoProduto']);
     $usuario_id = $user->user_login;
 
     $response = array(
@@ -16,9 +17,10 @@ function api_produto_post($request) {
       'post_title' => $nome,
       'post_status' => 'publish',
       'meta_input' => array(
-        'nome' => $nome,
-        'preco' => $preco,
-        'descricao' => $descricao,
+        'referenciaProduto' => $referenciaProduto,
+        'tituloProduto' => $tituloProduto,
+        'valorProduto' => $valorProduto,
+        'descricaoProduto' => $descricaoProduto,
         'usuario_id' => $usuario_id,
         'vendido' => 'false',
       ),

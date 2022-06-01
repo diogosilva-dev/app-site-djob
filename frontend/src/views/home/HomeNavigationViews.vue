@@ -13,7 +13,6 @@
           </router-link>
         </div>
         <div class="main">
-          <ProdutosBuscar/>
           <ProdutosLista/>
         </div>
     </div>
@@ -21,7 +20,6 @@
 
 <script>
 import SliderHeaderComponent from '@/components/navigation-components/slider-header/SliderHeaderComponent.vue'
-import ProdutosBuscar from "@/components/navigation-components/produto-buscar/ProdutoBuscarComponent.vue";
 import ProdutosLista from "@/components/navigation-components/produtos-lista/ProdutosListaComponent.vue";
 
 
@@ -29,7 +27,6 @@ export default {
   name: "home",
   components: {
     SliderHeaderComponent,
-    ProdutosBuscar,
     ProdutosLista
   },
 };
